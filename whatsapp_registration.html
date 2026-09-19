@@ -1,30 +1,53 @@
-<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AnshBind & Sangham Registration</title><style>
-body{margin:0;background:#090b10;color:#fff;font-family:Arial;padding:18px}.card{max-width:600px;margin:12px auto;padding:20px;background:#151922;border:1px solid #343b49;border-radius:18px}h1,h2{color:#facc15}input,select{width:100%;box-sizing:border-box;padding:12px;margin:6px 0 12px;border-radius:10px;border:1px solid #454c59;background:#0c1017;color:#fff}button{width:100%;padding:14px;border:0;border-radius:10px;background:#25D366;font-weight:bold;font-size:16px}.info{line-height:1.8;background:#0e131a;padding:12px;border-radius:10px}.note{color:#aaa;font-size:13px}</style></head><body>
-<div class="card"><h1>🔥 FREE FIRE TOURNAMENT</h1><div>Battle Royale • <b>AnshBind & Sangham</b></div><div class="info">🏆 13 Squads • 52 Players<br>📱 Online: <b>₹600/player</b><br>🏟️ Offline: <b>₹650/player</b><br>🥇 ₹5,000 + Trophy + Medal<br>🥈 ₹3,000 + Medal<br>🥉 ₹2,000 + Medal</div></div>
-<div class="card"><h2>📲 WhatsApp Registration</h2>
-<label>Team Name *</label><input id="team" placeholder="Enter team name">
-<label>Captain Name *</label><input id="captain" placeholder="Captain name">
-<label>Captain WhatsApp *</label><input id="phone" type="tel" placeholder="Mobile number">
-<label>Entry Type *</label><select id="entry"><option>Online - ₹600/player</option><option>Offline - ₹650/player</option></select>
-<label>Player 1 (Captain) *</label><input id="p1"><label>Player 2 *</label><input id="p2"><label>Player 3 *</label><input id="p3"><label>Player 4 *</label><input id="p4">
-<label>Game UID</label><input id="uid"><button onclick="sendWA()">📲 SEND REGISTRATION ON WHATSAPP</button><p class="note">Button दबाते ही WhatsApp खुलेगा और message तैयार मिलेगा। Details check करके Send दबाएँ।</p></div>
-<script>
-function sendWA(){let ids=['team','captain','phone','p1','p2','p3','p4'];if(ids.some(id=>!document.getElementById(id).value.trim())){alert('कृपया सभी * वाले fields भरें।');return}let g=id=>document.getElementById(id).value.trim();let msg=`🔥 FREE FIRE TOURNAMENT REGISTRATION 🔥
+function addTeam(){
+ const formMsg = document.getElementById('formMsg');
+ formMsg.textContent = '';
+ if(teams.length >= 13){ formMsg.textContent = '13 teams already registered.'; return; }
+ 
+ let name = document.getElementById('teamName').value.trim();
+ let captain = document.getElementById('captain').value.trim();
+ let phone = document.getElementById('phone').value.trim();
+ 
+ let p1 = document.getElementById('p1').value.trim();
+ let p2 = document.getElementById('p2').value.trim();
+ let p3 = document.getElementById('p3').value.trim();
+ let p4 = document.getElementById('p4').value.trim();
+ let players = [p1, p2, p3, p4];
+ let entry = document.getElementById('entry').value;
 
-Team Name: ${g('team')}
-Captain Name: ${g('captain')}
-Captain WhatsApp: ${g('phone')}
-Entry Type: ${g('entry')}
+ if(!name || !captain || !phone || players.some(x => !x)){
+   formMsg.textContent = 'Kripya Team Name, Captain, WhatsApp aur sabhi 4 players bharen.';
+   return;
+ }
+ 
+ if(!/^[0-9+\s-]{10,15}$/.test(phone)){
+   formMsg.textContent = 'Kripya valid WhatsApp number dalen.';
+   return;
+ }
+ 
+ let t = {name, captain, phone, players, entry};
+ teams.push(t);
+ localStorage.setItem('tournamentTeams', JSON.stringify(teams));
 
-Player 1 (Captain): ${g('p1')}
-Player 2: ${g('p2')}
-Player 3: ${g('p3')}
-Player 4: ${g('p4')}
-Game UID: ${g('uid')||'Not provided'}
+ const organizerWhatsApp = '916387105150';
+ const fee = t.entry.startsWith('Online') ? 600 : 650;
+ const total = fee * t.players.length;
+ 
+ const message = `🔥 FREE FIRE TOURNAMENT - NEW REGISTRATION\n\n` +
+                 `Team Name: ${t.name}\n` +
+                 `Captain Name: ${t.captain}\n` +
+                 `WhatsApp Number: ${t.phone}\n\n` +
+                 `Players:\n` +
+                 `1. ${t.players[0]}\n` +
+                 `2. ${t.players[1]}\n` +
+                 `3. ${t.players[2]}\n` +
+                 `4. ${t.players[3]}\n\n` +
+                 `Entry Type: ${t.entry}\n` +
+                 `Fee: ₹${fee}/player\n` +
+                 `Total Players: ${t.players.length}\n` +
+                 `Total Amount: ₹${total}`;
 
-🏆 Battle Royale
-👥 13 Squads / 52 Players
-💰 Online ₹600/player | Offline ₹650/player
-Organized by: AnshBind & Sangham`;
-location.href='https://wa.me/916387105150?text='+encodeURIComponent(msg)}
-</script></body></html>
+ const waUrl = 'https://wa.me/' + organizerWhatsApp + '?text=' + encodeURIComponent(message);
+ 
+ // Direct Redirection
+ window.location.href = waUrl;
+}
