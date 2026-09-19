@@ -3,35 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Fire Tournament</title>
+    <title>Free Fire Tournament - Registration</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
             background-color: #0d0d0d;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            margin: 0;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 15px;
             text-align: center;
         }
         .container {
-            max-width: 500px;
+            max-width: 600px;
             margin: auto;
-            background: #1a1a1a;
+            background: #141414;
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 15px;
             border: 2px solid #facc15;
-            box-shadow: 0 0 15px rgba(250, 204, 21, 0.3);
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.2);
         }
         h1 {
             color: #facc15;
+            font-size: 26px;
+            text-transform: uppercase;
             margin-bottom: 5px;
+            letter-spacing: 1px;
         }
-        p {
-            color: #ccc;
+        .organizer {
+            color: #aaa;
             font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .organizer span {
+            color: #fff;
+            font-weight: bold;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .card {
+            background: #1f1f1f;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+        .card-title {
+            font-size: 12px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+        .card-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #facc15;
+            margin-top: 5px;
+        }
+        .prize-section {
+            background: linear-gradient(145deg, #1f1f1f, #2a2208);
+            border: 1px solid #facc15;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .prize-title {
+            color: #facc15;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+        .prize-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 15px;
+        }
+        .total-prize {
+            margin-top: 10px;
+            background: #facc15;
+            color: #000;
+            font-weight: bold;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .rules-section {
+            background: #1f1f1f;
+            text-align: left;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #facc15;
+        }
+        .rules-section h3 {
+            color: #facc15;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .rules-section ul {
+            padding-left: 20px;
+            font-size: 13px;
+            color: #ddd;
+            line-height: 1.6;
         }
         .qr-section {
-            background: #262626;
+            background: #222;
             padding: 15px;
             border-radius: 10px;
             margin: 20px 0;
@@ -42,17 +126,24 @@
             height: 180px;
             border-radius: 8px;
             border: 2px solid #fff;
+            margin: 10px 0;
         }
         .btn-wa {
-            display: inline-block;
+            display: block;
             background-color: #25D366;
             color: white;
-            padding: 12px 20px;
+            padding: 14px;
             text-decoration: none;
             font-weight: bold;
             border-radius: 8px;
-            margin-top: 10px;
             font-size: 16px;
+            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        .contact-info {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -60,19 +151,74 @@
 
     <div class="container">
         <h1>🔥 FREE FIRE TOURNAMENT</h1>
-        <p>Direct WhatsApp Par Register Karein 🎮</p>
+        <div class="organizer">ORGANIZED BY: <span>ANSHBIND & SANGHAM</span></div>
 
-        <div class="qr-section">
-            <h3>📲 Scan QR Code to Register</h3>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wa.me/917266030538?text=Hi%2C%20mujhe%20Free%20Fire%20Tournament%20me%20registration%20karna%20hai." alt="WhatsApp QR Code">
-            <p style="margin-top: 10px;">GPay/Scanner se scan karke direct WhatsApp kholein.</p>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Online Entry Fee</div>
+                <div class="card-value">₹600 / Player</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Offline Entry Fee</div>
+                <div class="card-value">₹650 / Player</div>
+            </div>
         </div>
 
-        <p>Ya niche diye button par click karein 👇</p>
-        
-        <a class="btn-wa" href="https://wa.me/917266030538?text=Hi%2C%20mujhe%20Free%20Fire%20Tournament%20me%20registration%20karna%20hai." target="_blank">
-            💬 Open WhatsApp Chat
-        </a>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">Total Teams</div>
+                <div class="card-value">13 Squads</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Mode & Device</div>
+                <div class="card-value">Squad (Mobile Only)</div>
+            </div>
+        </div>
+
+        <div class="prize-section">
+            <div class="prize-title">🏆 PRIZE POOL</div>
+            <div class="prize-item">
+                <span>🥇 1st Rank:</span>
+                <strong>₹5,000 + Trophy + Medal</strong>
+            </div>
+            <div class="prize-item">
+                <span>🥈 2nd Rank:</span>
+                <strong>₹3,000 + Medal</strong>
+            </div>
+            <div class="prize-item">
+                <span>🥉 3rd Rank:</span>
+                <strong>₹2,000 + Medal</strong>
+            </div>
+            <div class="total-prize">
+                TOTAL CASH PRIZE: ₹10,000
+            </div>
+        </div>
+
+        <div class="rules-section">
+            <h3>📜 TOURNAMENT RULES</h3>
+            <ul>
+                <li>Sabhi khiladoyo ko samay par upasthit hona hoga.</li>
+                <li>Keval registered players hi match khelenge.</li>
+                <li>Hack/Cheat/Unfair play milne par team disqualify ho jayegi.</li>
+                <li>Room ID & Password keval registered players ko milega.</li>
+                <li>Gun Skin Attributes: ON | Device: Only Mobile.</li>
+            </ul>
+        </div>
+
+        <div class="qr-section">
+            <h3>📲 SCAN TO REGISTER</h3>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://wa.me/917266030538?text=Hi%2C%20mujhe%20Free%20Fire%20Tournament%20me%20registration%20karna%20hai." alt="WhatsApp QR Code">
+            <p style="font-size: 12px; color: #aaa;">Scan karke direct WhatsApp par message karein</p>
+            
+            <a class="btn-wa" href="https://wa.me/917266030538?text=Hi%2C%20mujhe%20Free%20Fire%20Tournament%20me%20registration%20karna%20hai." target="_blank">
+                💬 DIRECT WHATSAPP REGISTRATION
+            </a>
+        </div>
+
+        <div class="contact-info">
+            📞 Contact: +91 63871 05150 / 7266030538<br>
+            📸 Instagram: @golubind7809
+        </div>
     </div>
 
 </body>
